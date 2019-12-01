@@ -3,7 +3,8 @@
     {
       "idiom" : "超大图标",
       "size" : "256x256",
-      "scale" : "1x"
+      "scale" : "1x",
+      "filename": "icon-256x256.png"
     }
   ],
   "info" : {

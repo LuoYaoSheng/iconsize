@@ -23,3 +23,19 @@ $ cd iconsize
 
 # 安装依赖并运行
 $ npm install && npm start
+
+如何将图片转成icns
+# 安装icoutils
+$ brew install icoutils
+# 进入生成文件夹
+$ cd objectDir
+# 文件夹重命名
+$ mv MacOS MacOS.iconset
+# 通过iconutil生成
+$ iconutil -c icns MacOS.iconset -o mac.icns
+
+如何打包
+# 安装electron-builder
+$ npm install electron-builder --save-dev
+# 执行
+$ npm run dist

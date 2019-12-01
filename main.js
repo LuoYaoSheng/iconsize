@@ -110,13 +110,12 @@ ipcMain.on('event_renderer_to_main', (event, arg) => {
       break;
     case 'GLOBAL_VALUE_OGR':
       {
-        image = nativeImage.createFromPath( arg.path )
+        image = nativeImage.createFromPath(arg.path)
 
         let arr = arg.path.split("/")
         let path = '/' + arr.splice(1, arr.length - 2).join("/")
         global.sharedObject.originalLocation = path
         storage.setItem('originalLocation', path)
-        console.log('path: ' + path)
       }
       break;
     case 'SELECT_DIR':
@@ -209,11 +208,9 @@ function createSetWindow() {
 
 function createAllIcons(dir) {
 
-  let checkList = global.sharedObject.checkList //storage.getItem(`checkList`)
-  let csFiles = global.sharedObject.csFiles //storage.getItem(`csFiles`)
-  // let autoFiles = storage.getItem(`autoFiles`)
-  // let autoFilesPath = storage.getItem(`autoFilesPath`)
-  let quality = global.sharedObject.quality //storage.getItem(`quality`)
+  let checkList = global.sharedObject.checkList
+  let csFiles = global.sharedObject.csFiles
+  let quality = global.sharedObject.quality
   let scaleFactor = quality / 100.0
   for (const key in checkList) {
     if (checkList.hasOwnProperty(key)) {
@@ -229,11 +226,7 @@ function createAllIcons(dir) {
 }
 
 function createIcons(newFile_path, dirPath, scaleFactor) {
-
   //获取本地json文件的路径
-  // const newFile_path = path.join(__dirname, 'data/iOS.json').replace(/\\/g, "\/")
-  // let newFile_path = path.join(__dirname, jsonPath).replace(/\\/g, "\/")
-  // fs.exists(newFile_path, function (exists) {
   fs.exists(newFile_path, function (exists) {
     if (!exists) {
       $(".errorInformation").show();
@@ -241,7 +234,6 @@ function createIcons(newFile_path, dirPath, scaleFactor) {
       return 0
     } else {
       //读取本地的json文件
-      // let dir = '/Users/lys/Desktop/imageSize/iOS/'
       fs.mkdir(dirPath, function (err) {
         if (err)
           return console.log(err)
@@ -252,11 +244,13 @@ function createIcons(newFile_path, dirPath, scaleFactor) {
       for (var i in images) {
         let size = images[i]['size'].split("x")[0]
         let scale = images[i]['scale'].split("x")[0]
+        let filename = images[i]['filename']
+
         let w = size * scale
 
         let iImage = image.resize({ width: w, height: w })
         let imageData = iImage.toPNG([scaleFactor])
-        let imageName = scale == 1 ? 'Icon-' + size + '.png' : 'Icon-' + size + '@' + images[i]['scale'] + '.png'
+        let imageName = filename ? filename : scale == 1 ? 'icon_' + size + 'x' + size + '.png' : 'icon_' + size + 'x' + size + '@' + images[i]['scale'] + '.png'
         images[i]["filename"] = imageName
         fs.writeFile(path.resolve(dirPath + imageName), imageData, function (err) {
           if (err)
@@ -272,11 +266,11 @@ function createIcons(newFile_path, dirPath, scaleFactor) {
       )
     }
   })
+
   return 1
 }
 
 function checkConfig() {
-  // storage.setItem('init', '')
   let init = storage.getItem(`init`)
   if (!init) {
     let newFile_path = path.join(__dirname, 'data/config.json').replace(/\\/g, "\/");

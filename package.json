@@ -1,6 +1,6 @@
 {
-  "name": "electron-quick-start",
-  "version": "1.0.0",
+  "name": "iconsize",
+  "version": "1.0.1",
   "description": "A minimal Electron application",
   "main": "main.js",
   "scripts": {
@@ -45,19 +45,19 @@
       "icon": "build/icon.ico"
     }
   },
-  "repository": "https://github.com/electron/electron-quick-start",
+  "repository": "https://github.com/LuoYaoSheng/iconsize.git",
   "keywords": [
     "Electron",
-    "quick",
-    "start",
-    "tutorial",
-    "demo"
+    "icon",
+    "iconsize",
+    "images",
+    "imagesize"
   ],
-  "author": "GitHub",
+  "author": "LuoYaoSheng",
   "license": "CC0-1.0",
   "devDependencies": {
     "electron": "^6.0.11",
-    "electron-builder": "^22.1.0",
+    "electron-builder": "^22.2.0",
     "electron-rebuild": "^1.8.6",
     "nodemon": "^1.19.4"
   },
