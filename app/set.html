@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <title>Preferences</title>
+  <link rel="stylesheet" href="../node_modules/element-ui/lib/theme-chalk/index.css">
+  <link rel="stylesheet" href="../static/css/set.css">
+</head>
+
+<body>
+  <div id="app">
+    <el-container>
+      <div class="div-header div-region">
+        <!-- <el-col :span="4" v-for="item in [1,2,3,4]"> -->
+        <el-col :span="4">
+          <div class="header-menu">
+            <div class="menu">
+              <image class="menu-image" src="../static/images/general.png"> </image>
+              <div class="menu-title">General</div>
+            </div>
+          </div>
+        </el-col>
+      </div>
+
+      <div class="win-title  div-region">Preferences</div>
+
+      <div class="div-main">
+        <el-checkbox-group class="div-main-check div-region" v-model="checkList">
+          <el-checkbox label="Android"></el-checkbox>
+          <el-checkbox label="iOS"></el-checkbox>
+          <el-checkbox label="MacOS"></el-checkbox>
+          <el-checkbox label="watchOS"></el-checkbox>
+          <el-checkbox label="Win"></el-checkbox>
+        </el-checkbox-group>
+        <!-- 自定义文件1 -->
+        <div class="custom-1 div-region">
+          <div class="custom-title">Custom specifications :</div>
+          <el-input placeholder="Template file address" v-model="csFiles[0]" class="custom-iput"> </el-input>
+          <div class="custom-icon el-icon-folder-opened" tapmode @click="tapAction(0)"></div>
+        </div>
+        <!-- 自定义文件2 -->
+        <div class="custom-2 div-region">
+          <div class="custom-title">Custom specifications :</div>
+          <el-input placeholder="Template file address" v-model="csFiles[1]" class="custom-iput"> </el-input>
+          <div class="custom-icon el-icon-folder-opened" tapmode @click="tapAction(1)"></div>
+        </div>
+        <!-- 导出模板 -->
+        <div class="clickExport div-region" tapmode @click="tapAction(2)">Click export template</div>
+
+        <!-- 文件保存选项 -->
+        <div class="custom-3 div-region">
+          <div class="custom-title">Automatically Save Files To : </div>
+          <el-select v-model="autoFiles" placeholder="请选择" class="custom-select" tapmode @change="changeValue">
+            <el-option v-for="item in options" :key="item.autoFiles" :label="item.label" :value="item.autoFiles" >
+            </el-option>
+          </el-select>
+          <div class="custom-icon el-icon-folder-opened" v-if="autoFilesPath && autoFiles==3" tapmode @click="tapAction(4)"></div>
+        </div>
+        <!-- 压缩 -->
+        <div class="custom-4">
+          <div class="custom-title  div-region">JPG Quality :</div>
+          <el-slider v-model="quality" class="custom-slider"></el-slider>
+          <div class="custom-quality  div-region">{{quality}}%</div>
+        </div>
+        <!-- 声音 -->
+        <div class="custom-5 div-region">
+          <div class="custom-title">Sounds :</div>
+          <el-checkbox v-model="sounds" class="custom-check">Play interface sounds </el-checkbox>
+        </div>
+
+        <el-divider class="div-line1  div-region"></el-divider>
+        <el-divider class="div-line2  div-region"></el-divider>
+
+      </div>
+    </el-container>
+  </div>
+
+  <!-- You can also require other files to run in this process -->
+  <script src="../common.js"></script>
+  <script src="../vue.js"></script>
+  <script src="../node_modules/element-ui/lib/index.js"></script>
+  <script>
+
+
+    var vm = new Vue({
+      el: '#app',
+      data: {
+        options: [{
+          autoFiles: 1,
+          label: 'Always Ask'
+        }, {
+          autoFiles: 2,
+          label: 'Original Location'
+        }, {
+          autoFiles: 3,
+          label: 'Other……'
+        }],
+
+        checkList: [],
+        csFiles: ["", ""],
+        autoFiles: 1,
+        autoFilesPath: '',
+        quality: 100,
+        sounds: false,
+      },
+      watch:{
+        checkList: function (val) {
+          vm.valueAction()
+        },
+        csFiles: function (val) {
+          vm.valueAction()
+        },
+        autoFiles: function (val) {
+          vm.valueAction()
+        },
+        autoFilesPath: function (val) {
+          vm.valueAction()
+        },
+        quality: function (val) {
+          vm.valueAction()
+        },
+        sounds: function (val) {
+          vm.valueAction()
+        },
+      },
+      methods: {
+        init: function () {
+          //--考虑放置全局变量
+          vm.checkList = remote.getGlobal('sharedObject').checkList 
+          vm.csFiles = remote.getGlobal('sharedObject').csFiles 
+          vm.autoFiles = remote.getGlobal('sharedObject').autoFiles 
+          vm.autoFilesPath = remote.getGlobal('sharedObject').autoFilesPath 
+          vm.quality = remote.getGlobal('sharedObject').quality 
+          vm.sounds = remote.getGlobal('sharedObject').sounds 
+          vm.updateAutoFilesPath()
+          vm.initEvent()
+        },
+        initEvent: function () {
+          ipcRenderer.on(EVENT_MAIN_TO_RENDERER, (event, arg) => {
+            if( arg.action == 'SELECT_DIR'){
+              vm.autoFilesPath = arg.dir
+              vm.updateAutoFilesPath()
+            }else{
+              let index = arg.param.index
+              let csFiles
+              if (index == 0) {
+                csFiles = [
+                  arg.dir,
+                  vm.csFiles[1]
+                ]
+              } else {
+                csFiles = [
+                  vm.csFiles[0],
+                  arg.dir
+                ]
+              }
+              vm.csFiles = csFiles
+            }
+          })
+        },
+        updateAutoFilesPath:function(){
+          let autoFilesPath = vm.autoFilesPath.length > 0 ? vm.autoFilesPath : 'Other……'
+          vm.options = [{
+            autoFiles: 1,
+            label: 'Always Ask'
+          }, {
+            autoFiles: 2,
+            label: 'Original Location'
+          }, {
+            autoFiles: 3,
+            label: autoFilesPath
+          }]
+        },
+        tapAction: function (idx) {
+          if (idx == 2) {
+            ipcRenderer.send(EVENT_RENDERER_TO_MAIN, {
+              action: 'EXPORT_TEMPLATE'
+            })
+          } else if(idx == 4) {
+            ipcRenderer.send(EVENT_RENDERER_TO_MAIN, {
+              action: 'SELECT_DIR'
+            })
+          }else{
+            ipcRenderer.send(EVENT_RENDERER_TO_MAIN, {
+              action: 'SELECT_TEMPLATE',
+              param: {
+                index: idx
+              }
+            })
+          }
+        },
+        valueAction:function(){
+
+          let param = {
+            checkList: vm.checkList,
+            csFiles: vm.csFiles,
+            autoFiles: vm.autoFiles,
+            autoFilesPath: vm.autoFilesPath,
+            quality: vm.quality,
+            sounds: vm.sounds,
+          }
+
+          ipcRenderer.send(EVENT_RENDERER_TO_MAIN, {
+              action: 'GLOBAL_VALUE',
+              param: param
+          })
+        },
+        changeValue:function(value){
+          if(value==3 && vm.autoFilesPath.length==0){
+            ipcRenderer.send(EVENT_RENDERER_TO_MAIN, {
+              action: 'SELECT_DIR'
+            })
+          }
+        }
+      }
+    });
+
+    var remote = require('electron').remote
+    const {ipcRenderer} = require('electron')
+    vm.init()
+  </script>
+</body>
+
+</html>

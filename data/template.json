@@ -1,0 +1,13 @@
+{
+  "images" : [
+    {
+      "idiom" : "超大图标",
+      "size" : "256x256",
+      "scale" : "1x"
+    }
+  ],
+  "info" : {
+    "version" : 1,
+    "author" : "xcode"
+  }
+}

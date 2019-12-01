@@ -1,0 +1,9 @@
+{
+  "checkList": ["Android","iOS","MacOS","watchOS","Win"],
+  "csFiles":["",""],
+  "autoFiles":1,
+  "autoFilesPath":"",
+  "quality":100,
+  "sounds":true,
+  "originalLocation":""
+}

@@ -1,0 +1,90 @@
+
+body{
+    width: 600px;
+    height: 370px;
+    background-color:  #313131 !important;
+    -webkit-user-select: none;
+    -webkit-app-region: drag;
+}
+
+.win-title{
+    width:100%;
+    height:18px;
+    font-size:13px;
+    color:#A8A7A3;
+    line-height:18px;
+    text-align: center;
+
+    position: absolute;
+    top: 5px;
+    left: 0;
+}
+
+.gif-image{
+    width:258px;
+    height:146px;
+    border-radius:6px;
+    border:1px solid rgba(151,151,151,1);
+    text-align: center;
+    line-height: 146px;
+    color: aliceblue;
+
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-left: -129px;
+    margin-top: -93px;
+}
+
+.gif-image2{
+    width:258px;
+    height:146px;
+
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-left: -129px;
+    margin-top: -93px;
+}
+.button-save{
+    width:108px;
+    height:32px;
+    border-radius:16px;
+    border:1px solid rgba(243,243,243,1);
+    font-size:16px;
+    text-align: center;
+    color:rgba(243,243,243,1);
+    background-color: #313131;
+    line-height:30px;
+
+    position: absolute;
+    bottom: 56px;
+    left: 50%;
+    margin-left: -54px;
+}
+
+.button-set{
+    width:30px;
+    height:30px;
+    background: url("../images/setting.png");
+    /* background-color: #313131;
+    border:1px solid #313131; */
+
+    position: absolute;
+    bottom: 10px;
+    left: 10px;
+}
+
+.p-tips{
+    width:500px;
+    height:20px;
+    font-size:14px;
+    text-align: center;
+    color:#A8A7A3;
+    line-height:20px;
+
+    position: absolute;
+    bottom: 12px;
+    left: 50%;
+    margin-left: -250px;
+}

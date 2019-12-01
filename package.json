@@ -1,0 +1,69 @@
+{
+  "name": "electron-quick-start",
+  "version": "1.0.0",
+  "description": "A minimal Electron application",
+  "main": "main.js",
+  "scripts": {
+    "start": "nodemon --watch main.js --exec 'electron .'",
+    "dist": "electron-builder"
+  },
+  "build": {
+    "appId": "com.images.IconUtility",
+    "mac": {
+      "category": "public.app-category.developer-tools"
+    },
+    "dmg": {
+      "background": "build/appdmg.png",
+      "icon": "build/icon.icns",
+      "iconSize": 100,
+      "contents": [
+        {
+          "x": 380,
+          "y": 280,
+          "type": "link",
+          "path": "/Applications"
+        },
+        {
+          "x": 110,
+          "y": 280,
+          "type": "file"
+        }
+      ],
+      "window": {
+        "width": 500,
+        "height": 500
+      }
+    },
+    "linux": {
+      "target": [
+        "AppImage",
+        "deb"
+      ]
+    },
+    "win": {
+      "target": "squirrel",
+      "icon": "build/icon.ico"
+    }
+  },
+  "repository": "https://github.com/electron/electron-quick-start",
+  "keywords": [
+    "Electron",
+    "quick",
+    "start",
+    "tutorial",
+    "demo"
+  ],
+  "author": "GitHub",
+  "license": "CC0-1.0",
+  "devDependencies": {
+    "electron": "^6.0.11",
+    "electron-builder": "^22.1.0",
+    "electron-rebuild": "^1.8.6",
+    "nodemon": "^1.19.3"
+  },
+  "dependencies": {
+    "electron-localstorage": "^1.0.5",
+    "element-ui": "^2.12.0",
+    "jquery": "^3.4.1"
+  }
+}

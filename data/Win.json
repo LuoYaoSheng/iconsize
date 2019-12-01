@@ -1,0 +1,48 @@
+{
+  "images" : [
+    {
+      "idiom" : "超大图标",
+      "size" : "256x256",
+      "scale" : "1x"
+    },
+    {
+      "idiom" : "大图标",
+      "size" : "128x128",
+      "scale" : "1x"
+    },
+    {
+      "idiom" : "200% DPI scale",
+      "size" : "64x64",
+      "scale" : "1x"
+    },
+    {
+      "idiom" : "150% DPI scale",
+      "size" : "48x48",
+      "scale" : "1x"
+    },
+    {
+      "idiom" : "中图标/平铺",
+      "size" : "32x32",
+      "scale" : "1x"
+    },
+    {
+      "idiom" : "150% DPI scale",
+      "size" : "24x24",
+      "scale" : "1x"
+    },
+    {
+      "idiom" : "列表、详细信息",
+      "size" : "20x20",
+      "scale" : "1x"
+    },
+    {
+      "idiom" : "列表、详细信息",
+      "size" : "16x16",
+      "scale" : "1x"
+    }
+  ],
+  "info" : {
+    "version" : 1,
+    "author" : "xcode"
+  }
+}

@@ -1,0 +1,38 @@
+{
+    "images" : [
+      {
+        "size" : "36x36",
+        "idiom" : "LDPI",
+        "scale" : "1x"
+      },
+      {
+        "size" : "48x48",
+        "idiom" : "MDPI",
+        "scale" : "1x"
+      },
+      {
+        "size" : "72x72",
+        "idiom" : "HDPI",
+        "scale" : "1x"
+      },
+      {
+        "size" : "96x96",
+        "idiom" : "xhdpi",
+        "scale" : "1x"
+      },
+      {
+        "size" : "144x144",
+        "idiom" : "XXH DPI",
+        "scale" : "1x"
+      },
+      {
+        "size" : "192x192",
+        "idiom" : "XXXH DPI",
+        "scale" : "1x"
+      }
+    ],
+    "info" : {
+      "version" : 1,
+      "author" : "xcode"
+    }
+  }
