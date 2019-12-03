@@ -55,9 +55,9 @@ Github：<https://github.com/LuoYaoSheng>
 
 如果帮助到你了，请不吝赞赏！谢谢！
 
-![](https://wxt.sinaimg.cn/thumb300/c5dffb26gy1g9jzpqigflj20960b5dh1.jpg)
+![](https://wx2.sinaimg.cn/mw690/c5dffb26gy1g9jzufe6y9j20960b5dh1.jpg)
 
-![](https://wxt.sinaimg.cn/thumb300/c5dffb26gy1g9jzpqgmw9j20960b575y.jpg)
+![](https://wx2.sinaimg.cn/mw690/c5dffb26gy1g9jzumziehj20960b575y.jpg)
 
 ## 安装步骤
 
