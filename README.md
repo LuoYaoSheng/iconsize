@@ -6,7 +6,7 @@
 
 一款定位于快速批量制作指定大小的图片工具。
 
-你可以尝试用JustWrite写作，因为JustWrite可以帮你排版，帮你美化，帮你处理本地图片，帮你一键发布！
+快速掌握Electron开发技巧，实战项目扥你来学习[实战：Electron开发仿 图标生成 工具类桌面应用](https://gitbook.cn/new/gitchat/activity/5de687898a4a7d7033bb51d0)！
 
 如果帮助到你了，请帮忙点亮[Github](https://github.com/LuoYaoSheng/iconsize)右上角小星星，这将是我持续更新的动力！
 
@@ -62,27 +62,43 @@ Github：<https://github.com/LuoYaoSheng>
 ![](./README/zfb.png)
 
 ## 安装步骤
+
 克隆示例项目的仓库
+
 $ git clone https://github.com/LuoYaoSheng/iconsize.git
 
 进入这个仓库
+
 $ cd iconsize
 
 安装依赖并运行
+
 $ npm install && npm start
 
 ## 如何将图片转成icns
+
 安装icoutils
+
 $ brew install icoutils
+
 进入生成文件夹
+
 $ cd objectDir
+
 文件夹重命名
+
 $ mv MacOS MacOS.iconset
+
 通过iconutil生成
+
 $ iconutil -c icns MacOS.iconset -o mac.icns
 
 ## 如何打包
+
 安装electron-builder
+
 $ npm install electron-builder --save-dev
+
 执行
+
 $ npm run dist
