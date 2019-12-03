@@ -1,16 +1,60 @@
 {
   "name": "iconsize",
-  "version": "2.0.0",
-  "description": "A minimal Electron application",
+  "productName": "IconSize",
+  "version": "2.0.0-beta",
   "main": "main.js",
+  "description": "IconSize Desktop App",
+  "license": "Apache-2.0",
+  "copyright": "LuoYaoSheng, Inc.",
+  "author": {
+    "name": "LuoYaoSheng, Inc.",
+    "email": "1034639560@qq.com"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/LuoYaoSheng/iconsize.git"
+  },
+  "bugs": {
+    "url": "https://github.com/LuoYaoSheng/iconsize/issues"
+  },
+  "engines": {
+    "node": ">=6.0.0"
+  },
   "scripts": {
     "start": "nodemon --watch main.js --exec 'electron .'",
     "dist": "electron-builder"
   },
+  "pre-commit": [
+    "test"
+  ],
   "build": {
     "appId": "com.images.IconUtility",
+    "asar": true,
+    "copyright": "©2019 LuoYaoSheng, Inc.",
     "mac": {
-      "category": "public.app-category.developer-tools"
+      "category": "public.app-category.developer-tools",
+      "artifactName": "${productName}-${version}-${arch}.${ext}"
+    },
+    "linux": {
+      "category": "Chat;GNOME;GTK;Network;InstantMessaging",
+      "packageCategory": "GNOME;GTK;Network;InstantMessaging",
+      "description": "IconSize Desktop Client for Linux",
+      "target": [
+        "deb",
+        "zip",
+        "AppImage",
+        "snap"
+      ],
+      "maintainer": "寺西 <1034639560@qq.com>",
+      "artifactName": "${productName}-${version}-${arch}.${ext}"
+    },
+    "deb": {
+      "synopsis": "IconSize Desktop App",
+      "afterInstall": "./scripts/debian-add-repo.sh",
+      "afterRemove": "./scripts/debian-uninstaller.sh"
+    },
+    "snap": {
+      "synopsis": "IconSize Desktop App"
     },
     "dmg": {
       "background": "build/appdmg.png",
@@ -34,18 +78,26 @@
         "height": 500
       }
     },
-    "linux": {
-      "target": [
-        "AppImage",
-        "deb"
-      ]
-    },
     "win": {
-      "target": "squirrel",
-      "icon": "build/icon.ico"
+      "target": [
+        {
+          "target": "nsis-web",
+          "arch": [
+            "x64",
+            "ia32"
+          ]
+        }
+      ],
+      "icon": "build/icon.ico",
+      "artifactName": "${productName}-Web-Setup-${version}.${ext}",
+      "publisherName": "LuoYaoSheng, Inc."
+    },
+    "nsis": {
+      "allowToChangeInstallationDirectory": true,
+      "oneClick": false,
+      "perMachine": false
     }
   },
-  "repository": "https://github.com/LuoYaoSheng/iconsize.git",
   "keywords": [
     "Electron",
     "icon",
@@ -53,17 +105,69 @@
     "images",
     "imagesize"
   ],
-  "author": "LuoYaoSheng",
-  "license": "CC0-1.0",
   "devDependencies": {
-    "electron": "^6.0.11",
-    "electron-builder": "^22.2.0",
-    "electron-rebuild": "^1.8.6",
-    "nodemon": "^1.19.4"
+    "assert": "1.4.1",
+    "cp-file": "5.0.0",
+    "devtron": "1.4.0",
+    "electron": "3.0.10",
+    "electron-builder": "20.40.2",
+    "electron-connect": "0.6.2",
+    "electron-debug": "1.4.0",
+    "google-translate-api": "2.3.0",
+    "gulp": "4.0.0",
+    "gulp-tape": "0.0.9",
+    "htmlhint": "0.11.0",
+    "is-ci": "1.0.10",
+    "nodemon": "1.14.11",
+    "pre-commit": "1.2.2",
+    "spectron": "5.0.0",
+    "stylelint": "9.10.1",
+    "tap-colorize": "1.2.0",
+    "tape": "4.8.0",
+    "xo": "0.18.2"
   },
-  "dependencies": {
-    "electron-localstorage": "^1.0.5",
-    "element-ui": "^2.13.0",
-    "jquery": "^3.4.1"
+  "xo": {
+    "parserOptions": {
+      "sourceType": "script",
+      "ecmaFeatures": {
+        "globalReturn": true
+      }
+    },
+    "esnext": true,
+    "overrides": [
+      {
+        "files": "app*/**/*.js",
+        "rules": {
+          "max-lines": [
+            "warn",
+            {
+              "max": 700,
+              "skipBlankLines": true,
+              "skipComments": true
+            }
+          ],
+          "no-warning-comments": 0,
+          "object-curly-spacing": 0,
+          "capitalized-comments": 0,
+          "no-else-return": 0,
+          "no-path-concat": 0,
+          "no-alert": 0,
+          "guard-for-in": 0,
+          "prefer-promise-reject-errors": 0,
+          "import/no-unresolved": 0,
+          "import/no-extraneous-dependencies": 0,
+          "no-prototype-builtins": 0
+        }
+      }
+    ],
+    "ignore": [
+      "tests/*.js",
+      "tools/locale-helper/*.js"
+    ],
+    "envs": [
+      "node",
+      "browser",
+      "mocha"
+    ]
   }
 }
