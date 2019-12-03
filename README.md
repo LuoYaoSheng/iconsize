@@ -28,10 +28,10 @@ Github：<https://github.com/LuoYaoSheng/iconsize/releases>
 ## 预览
 
 ![](https://wx3.sinaimg.cn/mw690/c5dffb26gy1g9jyl7uae7j21400p077o.jpg)
-![](./README/2.jpg)
-![](./README/3.jpg)
-![](./README/4.jpg)
-![](./README/5.jpg)
+![](https://wx4.sinaimg.cn/mw690/c5dffb26gy1g9jyl7s8ktj21400p0tc3.jpg)
+![](https://wx4.sinaimg.cn/mw690/c5dffb26gy1g9jyl7vjugj21400p077x.jpg)
+![](https://wx1.sinaimg.cn/mw690/c5dffb26gy1g9jyl7shkfj21400p0n1g.jpg)
+![](https://wx4.sinaimg.cn/mw690/c5dffb26gy1g9jyl7sek3j21400p042a.jpg)
 
 ## 鸣谢
 
@@ -55,9 +55,9 @@ Github：<https://github.com/LuoYaoSheng>
 
 如果帮助到你了，请不吝赞赏！谢谢！
 
-![](./README/wx.png)
+![](https://wxt.sinaimg.cn/thumb300/c5dffb26gy1g9jzpqigflj20960b5dh1.jpg?tags=%5B%5D)
 
-![](./README/zfb.png)
+![](https://wxt.sinaimg.cn/thumb300/c5dffb26gy1g9jzpqgmw9j20960b575y.jpg?tags=%5B%5D)
 
 ## 安装步骤
 
