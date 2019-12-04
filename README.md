@@ -6,7 +6,7 @@
 
 一款定位于快速批量制作指定大小的图片工具。
 
-快速掌握Electron开发技巧，实战项目等你一起来学习 《[实战：Electron开发仿 图标生成 工具类桌面应用](https://gitbook.cn/new/gitchat/activity/5de687898a4a7d7033bb51d0)》！
+快速掌握Electron开发技巧，实战项目等你一起来学习 《[实战：Electron开发仿 图标生成 工具类桌面应用](https://gitbook.cn/gitchat/activity/5de687898a4a7d7033bb51d0)》！
 
 如果帮助到你了，请帮忙点亮[Github](https://github.com/LuoYaoSheng/iconsize)右上角小星星，这将是我持续更新的动力！
 
