@@ -23,7 +23,9 @@
 
 ## 下载 mac、window、linux 客户端
 
-Github：<https://github.com/LuoYaoSheng/iconsize/releases>
+Github：<https://github.com/LuoYaoSheng/iconsize/releases>   
+
+码云：<https://gitee.com/luoyaosheng/iconsize/releases>
 
 ## 预览
 
@@ -49,7 +51,9 @@ Blog：<https://weibo.com/u/3319790374>
 
 Email：[1034639560@qq.com](1034639560@qq.com)
 
-Github：<https://github.com/LuoYaoSheng>
+Github：<https://github.com/LuoYaoSheng>  
+
+码云：<https://gitee.com/luoyaosheng>
 
 交流QQ群：445455356
 
@@ -61,42 +65,47 @@ Github：<https://github.com/LuoYaoSheng>
 
 ## 安装步骤
 
-克隆示例项目的仓库
-
-$ git clone https://github.com/LuoYaoSheng/iconsize.git
-
+克隆示例项目的仓库   
+```
+$ git clone https://github.com/LuoYaoSheng/iconsize.git  
+```
+或 
+```
+$ git clone https://gitee.com/luoyaosheng/iconsize.git
+```
 进入这个仓库
-
+```
 $ cd iconsize
-
+```
 安装依赖并运行
-
+```
 $ npm install && npm start
-
+```
 ## 如何将图片转成icns
 
 安装icoutils
-
+```
 $ brew install icoutils
-
+```
 进入生成文件夹
-
+```
 $ cd objectDir
-
+```
 文件夹重命名
-
+```
 $ mv MacOS MacOS.iconset
-
+```
 通过iconutil生成
-
+```
 $ iconutil -c icns MacOS.iconset -o mac.icns
-
+```
 ## 如何打包
 
 安装electron-builder
-
+```
 $ npm install electron-builder --save-dev
-
+```
 执行
-
+```
 $ npm run dist
+```
