@@ -4,7 +4,6 @@ const { app, BrowserWindow, ipcMain, dialog } = require('electron')
 const path = require('path')
 const fs = require('fs')
 const nativeImage = require('electron').nativeImage
-
 const storage = require('electron-localstorage')
 
 let image = null//nativeImage.createFromPath('/Users/lys/Desktop/imageSize/icon.jpg')
