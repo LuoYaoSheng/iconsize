@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <!-- https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP -->
+  <!-- <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'">
+  <meta http-equiv="X-Content-Security-Policy" content="default-src 'self'; script-src 'self'"> -->
+  <title>Hello World!</title>
+  <link rel="stylesheet" href="./node_modules/element-ui/lib/theme-chalk/index.css">
+</head>
+
+<body>
+  <div id="app">
+    <h1>{{title}}</h1>
+    <div id="holder"> Drag your file here </div>
+    <el-button tapmode @click="testSharedObject()">Click it !</el-button> <!-- 添加一个按钮，点击触发 testSharedObject() -->
+  </div>
+  <!-- You can also require other files to run in this process -->
+  <script src="./renderer.js"></script>
+  <script src="./vue.js"></script>
+  <script src="./common.js"></script>
+  <script src="./node_modules/element-ui/lib/index.js"></script> <!-- 引入 element-ui js -->
+  <script>
+    var vm = new Vue({
+      el: '#app',
+      data: {
+        title: "Hello Vue.js!"
+      },
+      methods: {
+        init: function () {
+          console.log('初始化方法放这里')
+          let checkList = storage.getItem(`checkList`);
+          vm.title = JSON.stringify(checkList)
+        },
+        // 添加测试全局变量的值方法
+        testSharedObject:function(){
+          var remote = require('electron').remote 
+          alert( remote.getGlobal('sharedObject').quality )
+        }
+      }
+    })
+    const storage = require('electron-localstorage') // 本地存储
+    vm.init()
+  </script>
+  <script>
+    document.addEventListener('drop', (e) => {
+      e.preventDefault();
+      e.stopPropagation();
+
+      for (const f of e.dataTransfer.files) {
+        // console.log('File(s) you dragged here: ', f.path)
+        alert(f.path)
+      }
+    });
+    document.addEventListener('dragover', (e) => {
+      e.preventDefault();
+      e.stopPropagation();
+    });
+  </script>
+</body>
+
+</html>
